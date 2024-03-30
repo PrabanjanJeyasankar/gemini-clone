@@ -3,11 +3,12 @@ import { assets } from '../../assets/assets'
 import './SideBarComponent.css'
 
 function SideBarComponent() {
-  const [extendedSideBar, setExtendedSideBar] = useState(false)
+  const [extendSideBar, setExtendSideBar] = useState(true)
 
   const handleExtended = () => {
-    setExtendedSideBar(!extendedSideBar) 
+    setExtendSideBar(!extendSideBar)
   }
+
   return (
     <React.Fragment>
       <div className='side-bar'>
@@ -23,9 +24,9 @@ function SideBarComponent() {
               src={assets.plus_icon}
               alt='plus-icon'
             />
-            {extendedSideBar ? <p>New chat</p> : null}
+            {extendSideBar ? <p>New chat</p> : null}
           </div>
-          {extendedSideBar ? (
+          {extendSideBar ? (
             <div className='recent'>
               <p className='recent-title'>Recent</p>
               <div className='recent-entry'>
@@ -45,21 +46,21 @@ function SideBarComponent() {
               src={assets.question_icon}
               alt='question_icon'
             />
-            {extendedSideBar ? <p>Help</p> : null}
+            {extendSideBar ? <p>Help</p> : null}
           </div>
           <div className='bottom-item recent-entry'>
             <img
               src={assets.history_icon}
               alt='history_icon'
             />
-            {extendedSideBar ? <p>Activity</p> : null}
+            {extendSideBar ? <p>Activity</p> : null}
           </div>
           <div className='bottom-item recent-entry'>
             <img
               src={assets.setting_icon}
               alt='setting_icon'
             />
-            {extendedSideBar ? <p>Settings</p> : null}
+            {extendSideBar ? <p>Settings</p> : null}
           </div>
         </div>
       </div>
