@@ -6,7 +6,7 @@ function App() {
   return (
     <React.Fragment>
       <SideBarComponent />
-      <MainComponent /> 
+      <MainComponent />
     </React.Fragment>
   )
 }

@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './MainComponent.css'
 import { assets } from '../../assets/assets'
+import { Context } from '../../context/context'
 
 function MainComponent() {
+  const { onSent, input, setInput, showResult, recentPrompt, resultData } =
+    useContext(Context)
+
   return (
     <React.Fragment>
       <div className='main'>
@@ -15,45 +19,69 @@ function MainComponent() {
           />
         </div>
         <div className='main-container'>
-          <div className='greet'>
-            <p>
-              <span>Hello, Prabanjan</span>
-            </p>
-            <p>How can i help you today?</p>
-          </div>
-          <div className='cards'>
-            <div className='card'>
-              <p>Compare the differences between pickleball and tennis</p>
-              <img
-                src={assets.bulb_icon}
-                alt='bulb_icon'
-              />
+          {!showResult ? (
+            <>
+              <div className='greet'>
+                <p>
+                  <span>Hello, Prabanjan</span>
+                </p>
+                <p>How can i help you today?</p>
+              </div>
+              <div className='cards'>
+                <div className='card'>
+                  <p>Compare the differences between pickleball and tennis</p>
+                  <img
+                    src={assets.bulb_icon}
+                    alt='bulb_icon'
+                  />
+                </div>
+                <div className='card'>
+                  <p>Generate unit tests for the following C# function</p>
+                  <img
+                    src={assets.code_icon}
+                    alt='code_icon'
+                  />
+                </div>
+                <div className='card'>
+                  <p>Settle a debate: how should you store bread?</p>
+                  <img
+                    src={assets.bulb_icon}
+                    alt='bulb_icon'
+                  />
+                </div>
+                <div className='card'>
+                  <p>Give me tips to help care for a tricky plant</p>
+                  <img
+                    src={assets.compass_icon}
+                    alt='compass_icon'
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className='result'>
+              <div className='result-title'>
+                <img
+                  src={assets.user_icon}
+                  alt='user_icon'
+                />
+                <p>{recentPrompt}</p>
+              </div>
+              <div className='result-data'>
+                <img
+                  src={assets.gemini_icon}
+                  alt='gemini_icon'
+                />
+                <p>{resultData}</p>
+              </div>
             </div>
-            <div className='card'>
-              <p>Generate unit tests for the following C# function</p>
-              <img
-                src={assets.code_icon}
-                alt='code_icon'
-              />
-            </div>
-            <div className='card'>
-              <p>Settle a debate: how should you store bread?</p>
-              <img
-                src={assets.bulb_icon}
-                alt='bulb_icon'
-              />
-            </div>
-            <div className='card'>
-              <p>Give me tips to help care for a tricky plant</p>
-              <img
-                src={assets.compass_icon}
-                alt='compass_icon'
-              />
-            </div>
-          </div>
+          )}
+
           <div className='main-bottom'>
             <div className='prompt-box'>
               <input
+                onChange={(event) => setInput(event.target.value)}
+                value={input}
                 type='text'
                 placeholder='Enter a prompt here'
               />
@@ -68,6 +96,7 @@ function MainComponent() {
                 />
                 <img
                   src={assets.send_icon}
+                  onClick={() => onSent()}
                   alt='send_icon'
                 />
               </div>

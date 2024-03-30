@@ -1,13 +1,13 @@
-const {
+import {
   GoogleGenerativeAI,
   HarmCategory,
   HarmBlockThreshold,
-} = require('@google/generative-ai')
+} from '@google/generative-ai'
 
 const MODEL_NAME = 'gemini-1.0-pro'
-const API_KEY = 'AIzaSyDTbY3y3G6thRIFANTfT_F9DRfRtmv43ns'
+const API_KEY = 'AIzaSyClhyHn3IXTxsrE-pUOoR1XWXDqy3_eVQM'
 
-async function runChat() {
+async function runChat(prompt) {
   const genAI = new GoogleGenerativeAI(API_KEY)
   const model = genAI.getGenerativeModel({ model: MODEL_NAME })
 
@@ -43,9 +43,10 @@ async function runChat() {
     history: [],
   })
 
-  const result = await chat.sendMessage('YOUR_USER_INPUT')
+  const result = await chat.sendMessage(prompt)
   const response = result.response
   console.log(response.text())
+  return response.text()
 }
 
-runChat()
+export default runChat
