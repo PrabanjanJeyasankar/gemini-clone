@@ -5,7 +5,7 @@ import { Context } from '../../context/context'
 
 function SideBarComponent() {
   const [extendSideBar, setExtendSideBar] = useState(true)
-  const { onSent, previousPrompts, setRecentPrompt } = useContext(Context)
+  const { onSent, previousPrompts, setRecentPrompt,newChat } = useContext(Context)
 
   const handleExtended = () => {
     setExtendSideBar(!extendSideBar)
@@ -26,7 +26,7 @@ function SideBarComponent() {
             alt='menu-icon'
             className='menu-icon'
           />
-          <div className='new-chat'>
+          <div onClick={()=>newChat()} className='new-chat'>
             <img
               src={assets.plus_icon}
               alt='plus-icon'
