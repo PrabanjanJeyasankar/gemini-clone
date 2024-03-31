@@ -4,8 +4,15 @@ import { assets } from '../../assets/assets'
 import { Context } from '../../context/context'
 
 function MainComponent() {
-  const { onSent, input, setInput, showResult, recentPrompt, resultData } =
-    useContext(Context)
+  const {
+    onSent,
+    input,
+    setInput,
+    showResult,
+    recentPrompt,
+    resultData,
+    loading,
+  } = useContext(Context)
 
   return (
     <React.Fragment>
@@ -72,7 +79,15 @@ function MainComponent() {
                   src={assets.gemini_icon}
                   alt='gemini_icon'
                 />
-                <p>{resultData}</p>
+                {loading ? (
+                  <div className='loader'>
+                    <hr />
+                    <hr />
+                    <hr />
+                  </div>
+                ) : (
+                  <p>{resultData}</p>
+                )}
               </div>
             </div>
           )}
