@@ -86,7 +86,7 @@ function MainComponent() {
                     <hr />
                   </div>
                 ) : (
-                  <p>{resultData}</p>
+                  <p dangerouslySetInnerHTML={{__html: resultData}}></p>
                 )}
               </div>
             </div>
