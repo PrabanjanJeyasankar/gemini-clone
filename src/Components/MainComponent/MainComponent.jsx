@@ -86,7 +86,7 @@ function MainComponent() {
                     <hr />
                   </div>
                 ) : (
-                  <p dangerouslySetInnerHTML={{__html: resultData}}></p>
+                  <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
                 )}
               </div>
             </div>
@@ -109,11 +109,13 @@ function MainComponent() {
                   src={assets.mic_icon}
                   alt='mic_icon'
                 />
-                <img
-                  src={assets.send_icon}
-                  onClick={() => onSent()}
-                  alt='send_icon'
-                />
+                {input ? (
+                  <img
+                    src={assets.send_icon}
+                    onClick={() => onSent()}
+                    alt='send_icon'
+                  />
+                ) : null}
               </div>
             </div>
             <p className='bottom-info'>

@@ -1,5 +1,6 @@
 .side-bar {
   min-height: 100vh;
+  max-width: 25%;
   display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,7 +25,7 @@
   gap: 10px;
   background-color: #e6eaf1;
   padding: 10px 15px;
-  border-radius: 15px;
+  border-radius: 40px;
   font-size: 14px;
   color: gray;
   cursor: pointer;
@@ -33,6 +34,7 @@
 .side-bar .recent {
   display: flex;
   flex-direction: column;
+  animation: fadeIn 1s;
 }
 
 .side-bar .recent-title {
@@ -63,4 +65,10 @@
 .side-bar .bottom-item {
   padding-right: 10px;
   cursor: pointer;
+}
+
+@media  (max-width:600px){
+  .side-bar{
+    display: none;
+  }
 }
